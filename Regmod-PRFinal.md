@@ -2,7 +2,7 @@
 title: "Regression Models Assignment"
 author: "P.Rogbeer"
 date: "Thursday, August 14, 2014"
-output: pdf_document
+output: html_document
 ---
 #### Executive Summary: 
 
@@ -37,7 +37,7 @@ As the **t-test** compares the means of two data sets, `mtcars` data was split i
 ##### III - Selecting the best model:
 
 
-After establishing the H1 hypothesis , the next step was to find an appropriate model for assessing the correlations in the data sample.The difficulty was to get an adequately simple and reliable model, which did not compromise prediction outcomes - in essence trying to find which subset pf the equation Y = b0 + b2 X2...... + epsilon ) was the best fit.  
+After establishing the H1 hypothesis , the next step was to find an appropriate model for assessing the correlations in the data sample.The difficulty was to get an adequately simple and reliable model, which did not compromise prediction outcomes - in essence trying to find which subset of the equation (Y = b0 + b2 X2...... + epsilon) was the best fit.  
 **"Backward Elimination"** was used as method.  With this method , a linear regression of the full model is first built (*lm(mpg ~ am, data=mtcars)*) then a stepwise elimination of individual variables performed. To dtermine which variable to eliminate, a so-called **partial F-test** must be performed on each of them. The `step` function in **r** automatically performs this operation and produces the **"best fit model"**. A**"Forward elimination"**  (inverse to the **backward test **) test was also done to validate the previous result. Interestingly the forward elimination introduced an extra variable in the model.
 Backward Elimination gave **Model 1** and Forward elimination **Model 2**.  
 
