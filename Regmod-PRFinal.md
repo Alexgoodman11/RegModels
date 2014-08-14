@@ -2,7 +2,7 @@
 title: "Regression Models Assignment"
 author: "P.Rogbeer"
 date: "Thursday, August 14, 2014"
-output: html_document
+output: pdf_document
 ---
 #### Executive Summary: 
 
@@ -96,6 +96,12 @@ A plot of the residuals is to be found in Appendix  6.
 **Q -Q Plot** : This is (quantile-quantile or q-q plot) used to check the validity of a distributional assumption for a data set. The basic idea is to compute the theoretically expected value for each data point based on the distribution in question. If the data indeed follow the assumed distribution, then the points on the q-q plot will fall approximately on a straight line. This appears to be the case here, hence our assumption of normal distribution is fairly correct.  
 
 **Scale-Location plot** - This plot is similar to the ** residuals vs. fitted values** plot, but it uses the square root of the standardized residuals. Like the first plot, there should be no discernable pattern to the plot, if our linear regression analysis is valid. Indeed the results show that the point are randomly distributed on both sides of the horizontal line.
+
+
+
+
+##### VI - Conclusion:  
+Manual cars are more efficient and, *ceteris paribus* ,for every unit (1 ton) of car weight increase, manual cars have an extra range of 2.94 Miles per gallon compared to Automatic cars. 
 
 
 END
