@@ -55,30 +55,30 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <div id="header">
 <h1 class="title">Regression Models Assignment</h1>
 <h4 class="author"><em>P.Rogbeer</em></h4>
-<h4 class="date"><em>Thursday, August 14, 2014</em></h4>
+<h4 class="date"><em>Thursday, September 9, 2014</em></h4>
 </div>
 
 
 <div id="executive-summary" class="section level4">
 <h4>Executive Summary:</h4>
-<p>This assignment paper analyses the <code>mtcars</code> database to identify if Automatic cars are more efficient than Manual cars (<strong>MPG</strong> used as <strong>dependent variable</strong>) . The first operation, a <strong>t-test</strong> conclusively showed that a performance difference existed between both types of cars - the null hypothesis can be rejected. Then, a linear regression analysis was done on a pre-calculated/identified <strong>“best fit” model</strong>. The nature of the correlationship between the various significant <strong>independent variables</strong> and the <strong>MPG</strong> were assessed.The results showed <strong>Manual cars</strong> had better MPG indices , making them the more efficient cars. For each unit of weight (1 ton) increase, manual cars had a 2.936 increase in MPG.</p>
+<p>This assignment paper analyses the <code>mtcars</code> database to determine if Automatic cars are more efficient than Manual cars (<strong>MPG</strong> used as <strong>dependent variable</strong>) . The first operation, a <strong>t-test</strong>, conclusively showed that a performance difference existed between both types of cars - the null hypothesis could be rejected. Then, a linear regression analysis was performed on a pre-calculated/identified <strong>“best fit”</strong> model. It shouls also be noted that in this report,the correlationship between the various significant <strong>independent variables</strong> and the <strong>MPG</strong> were also assessed.The end result of the current evaluation showed <strong>Manual cars</strong> to have better MPG indices , making them the more efficient cars. For each unit of weight (1 ton) increase, manual cars had a 2.936 increase in MPG, covring more miles than with an Automatic car.</p>
 </div>
 <div id="analysis" class="section level4">
 <h4>Analysis</h4>
 <div id="i---exploratory-data-analysis-and-pre-processing" class="section level5">
 <h5>I - Exploratory Data Analysis and Pre-Processing:</h5>
-<p>The <code>mtcars</code> data is loaded and checked to see if any cleaning/transformation is required. Some transformation is needed - relevant <strong><em>categorical variables</em></strong> (<code>am</code> as a minimum) transformed to <strong><em>factors</em></strong>. A paired plot is then done, to get a preview of the data distributions. (Appendix 1 , 2).</p>
+<p>The <code>mtcars</code> data wass loaded and checked to see if any cleaning/transformation was required.<br />Some transformation were indeed needed - relevant <strong><em>categorical variables</em></strong> (<code>am</code> as a minimum) transformed to <strong><em>factors</em></strong>. Then a paired plot was done, to get a preview of the data distributions. (Appendix 1 , 2).</p>
 </div>
 <div id="ii---hypothesis-testing-t-test" class="section level5">
 <h5>II - Hypothesis Testing (t-test):</h5>
-<p>The null hypothesis is formulated and tested for possible rejection:</p>
+<p>The null hypothesis was formulated and tested for possible rejection:</p>
 <p><strong>H0</strong> = <em>There is no performance difference (MPG) between Automatic and Manual cars</em></p>
-<p>As the <strong>t-test</strong> compares the means of two data sets, <code>mtcars</code> data was split into <strong>“automatic”</strong> and a <strong>“manual”</strong> data subsets. The <strong>r code</strong> for the test is <code>t.test(data_aut,data_man)</code>. Results obtained were (t = -3.7671), (df = 18.332), (p-value = 0.001374). With the P-value obtained, the null hypothesis can confidently be rejected and the alternate hypothesis <strong>H1</strong> accepted.:</p>
+<p>As the <strong>t-test</strong> compares the means of two data sets, <code>mtcars</code> data was split into <strong>“automatic”</strong> and a <strong>“manual”</strong> data subsets. The <strong>r code</strong> for the test is <code>t.test(data_aut,data_man)</code>. Results obtained were (t = -3.7671), (df = 18.332), (p-value = 0.001374). This P-value of 0.001374 allows us to confidently reject the null hypothesis and accept the alternate hypothesis <strong>H1</strong>:</p>
 <p><strong>H1</strong> = <em>There exists a performance difference between Automatic and Manual cars</em></p>
 </div>
 <div id="iii---selecting-the-best-model" class="section level5">
 <h5>III - Selecting the best model:</h5>
-<p>After establishing the H1 hypothesis , the next step was to find an appropriate model for assessing the correlations in the data sample.The difficulty was to get an adequately simple and reliable model, which did not compromise prediction outcomes - in essence trying to find which subset of the equation (Y = b0 + b2 X2…… + epsilon) was the best fit.<br /><strong>“Backward Elimination”</strong> was used as method. With this method , a linear regression of the full model is first built (<em>lm(mpg ~ am, data=mtcars)</em>) then a stepwise elimination of individual variables performed. To dtermine which variable to eliminate, a so-called <strong>partial F-test</strong> must be performed on each of them. The <code>step</code> function in <strong>r</strong> automatically performs this operation and produces the <strong>“best fit model”</strong>. A<strong>“Forward elimination”</strong> (inverse to the <strong>backward test </strong>) test was also done to validate the previous result. Interestingly the forward elimination introduced an extra variable in the model. Backward Elimination gave <strong>Model 1</strong> and Forward elimination <strong>Model 2</strong>.</p>
+<p>After establishing the H1 hypothesis , the next step was to find an appropriate model for assessing the correlations in the data sample.The difficulty was to get an adequately simple and reliable model, which did not compromise prediction outcomes - in essence trying to find which subset of the equation (Y = b0 + b2 X2…… + epsilon) was the best fit.<br /><strong>“Backward Elimination”</strong> was used as method. With this method , a linear regression of the full model was first built (<em>lm(mpg ~ am, data=mtcars)</em>) then a stepwise elimination of individual variables performed. To determine which variable to eliminate, a so-called <strong>partial F-test</strong> was performed on each of them. The <code>step</code> function in <strong>r</strong> automatically performs this operation and produces the <strong>“best fit model”</strong>. A <strong>“Forward elimination”</strong> test (inverse to the <strong>backward test </strong>) was also done to validate the previous result. Interestingly the forward elimination introduced an extra variable in the model. Backward Elimination gave <strong>Model 1</strong> and Forward elimination <strong>Model 2</strong>.</p>
 <ul>
 <li><strong>Model 1</strong>: lm(formula = <strong>mpg ~ wt + qsec + am</strong>, data = mtcars).<br /></li>
 <li>Model 1 Statistics: F-statistic: 52.75 on 3 and 28 DF, p-value: 1.21e-11<br /></li>
@@ -89,10 +89,10 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 </div>
 <div id="iv---model-accuracy-ci" class="section level5">
 <h5>IV - Model Accuracy (CI):</h5>
-<p>It is necessary to determine how reliable our model is , i.e. we need to analyze the <strong>Confidence Interval</strong>&quot; of the model. This is achieved by applying the r function <code>confint()</code> to the model used and then evaluate the results. For our selected model, all the values were shown to be within the range defined by the CI=2.5% (Lower) and CI=97.5% (Upper) (Appendix 4 for CI table). Our model can be considered as significant.</p>
+<p>To determine the degree of reliability of our model , a <strong>Confidence Interval</strong>&quot; analysis of the model was performed. This can be done with the r function <code>confint()</code> applied to the model. For our selected model, all the values were shown to be within the range defined by the CI=2.5% (Lower) and CI=97.5% (Upper) (Appendix 4 for CI table). Our model cauld be considered to be significant.</p>
 </div>
-<div id="iv---interpret-results-model-1" class="section level5">
-<h5>IV - Interpret Results ( Model 1)</h5>
+<div id="v---interpret-results-model-1" class="section level5">
+<h5>V - Interpret Results ( Model 1)</h5>
 <pre><code>##             Estimate Std. Error t value  Pr(&gt;|t|)
 ## (Intercept)    9.618     6.9596   1.382 1.779e-01
 ## wt            -3.917     0.7112  -5.507 6.953e-06
@@ -104,15 +104,15 @@ if (window.hljs && document.readyState && document.readyState === "complete") {
 <p><strong>amManual=2.936</strong> : Positive slope. A manual car has an MPG index of 2.936 extra compared to an automatic car. Meaning it will cover 3 more miles compared to an automatic car, making it a more efficient vehicle.</p>
 <p><em>(for units , see Appendix 5)</em></p>
 </div>
-<div id="v---residuals" class="section level5">
-<h5>V - Residuals :</h5>
+<div id="vi---residuals" class="section level5">
+<h5>VI - Residuals :</h5>
 <p>A plot of the residuals is to be found in Appendix 6.</p>
 <p><strong>Residual Plot</strong> :If the points in a residual plot are randomly dispersed around the horizontal axis, a linear regression model is appropriate for the data; otherwise, a non-linear model is more appropriate. In our current case, in the <em>The Residuals vs. Fitted</em> plot the points do seem to be randomly distributed along the horizontal line. So our linear regression analysis is valid.</p>
 <p><strong>Q -Q Plot</strong> : This is (quantile-quantile or q-q plot) used to check the validity of a distributional assumption for a data set. The basic idea is to compute the theoretically expected value for each data point based on the distribution in question. If the data indeed follow the assumed distribution, then the points on the q-q plot will fall approximately on a straight line. This appears to be the case here, hence our assumption of normal distribution is fairly correct.</p>
 <p><strong>Scale-Location plot</strong> - This plot is similar to the ** residuals vs. fitted values** plot, but it uses the square root of the standardized residuals. Like the first plot, there should be no discernable pattern to the plot, if our linear regression analysis is valid. Indeed the results show that the point are randomly distributed on both sides of the horizontal line.</p>
 </div>
-<div id="vi---conclusion" class="section level5">
-<h5>VI - Conclusion:</h5>
+<div id="vii---conclusion" class="section level5">
+<h5>VII - Conclusion:</h5>
 <p>Manual cars are more efficient and, <em>ceteris paribus</em> ,for every unit (1 ton) of car weight increase, manual cars have an extra range of 2.94 Miles per gallon compared to Automatic cars.</p>
 <p>END</p>
 <p></p>
